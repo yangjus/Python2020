@@ -1,0 +1,30 @@
+{% extends 'store/base.html' %}
+{% block title %}
+<title>Login</title>
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block navbar %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'store-homepage' %}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'store-about' %}">About</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'store-contact' %}">Contact</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'store-checkout' %}">Checkout</a>
+</li>
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Login</h2>
+<form method="POST" class="form-group">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <p>Don't have an account? Create one <a href="{% url 'register' %}">here</a></p>
+  <button type="submit" class="btn btn-success">Login</button>
+</form>
+</div>
+{% endblock %}
